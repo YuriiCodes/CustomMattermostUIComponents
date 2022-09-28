@@ -1,5 +1,5 @@
 import classes from "../customUIStyles.module.css";
-import InputField from "../inputField";
+import InputField from "../input_field";
 
 
 export default function ApiKeyEnterForm(): JSX.Element {

@@ -1,6 +1,6 @@
 import classes from "../customUIStyles.module.css";
 import {ComponentProps} from "react";
-import InputField from "../inputField/inputField";
+import InputField from "../input_field/inputField";
 
 
 

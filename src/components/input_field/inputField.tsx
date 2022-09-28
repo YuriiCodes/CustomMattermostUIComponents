@@ -5,6 +5,7 @@ export default function InputField(props: ComponentProps<any>) {
     return (
         <div className={classes.inputField}>
             <label htmlFor={props.name}>{props.name || "value"}: </label>
+
             <input id={props.name}
                    className={classes.inputFieldInp}
                    placeholder={props.placeholder}

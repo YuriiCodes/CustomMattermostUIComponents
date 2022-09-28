@@ -1,0 +1,12 @@
+.msgAfterSubmit{
+    width: 50vw;
+    height: 4vh;
+    text-align: center;
+    padding-y: auto;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    background: #173fd0;
+    border-radius: 2px;
+    color: #fff;
+}
