@@ -1,20 +1,9 @@
-import classes from "./create_ticket_form.module.css";
+import classes from "../customUIStyles.module.css";
 import {ComponentProps} from "react";
+import InputField from "../inputField/inputField";
 
 
-function InputField(props: ComponentProps<any>) {
-    return (
-        <div className={classes.inputField}>
-            <label htmlFor={props.name}>{props.name || "value"}: </label>
-            <input id={props.name}
-                   className={classes.inputFieldInp}
-                   placeholder={props.placeholder}
-                   type={props.type}
-                   required={props.required}
-            />
-        </div>
-    )
-}
+
 
 
 export default function CreateTicketForm(): JSX.Element {

@@ -11,17 +11,8 @@
 .inputGroup{
     width: 50vw;
 }
-.inputField {
-    margin-bottom: 1em;
-    height: 1.5em;
-    display: flex;
-}
-.inputFieldInp{
-    margin-left: auto;
-    width: 40vw;
-    border: none;
-    border-radius: 2px;
-}
+
+
 .submitBtn{
     margin-left: auto;
     width: 100%;
