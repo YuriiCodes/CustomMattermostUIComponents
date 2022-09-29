@@ -1,7 +1,18 @@
-import {ComponentProps} from "react";
+import React from "react";
 
 import classes from "./inputField.module.css";
-export default function InputField(props: ComponentProps<any>) {
+
+interface InputFieldProps {
+    name: string,
+    placeholder?: string,
+    required?: boolean,
+    // Text by default, so we leave it as optional. Can also be email/phone/password, etc.
+    type?: string,
+    // A function that sets a state value to whatever user inputs in the field. That function is passed from the parent component via props.
+    setValue: React.Dispatch<React.SetStateAction<string>>
+}
+
+export default function InputField(props: InputFieldProps) {
 
     return (
         <div className={classes.inputField}>

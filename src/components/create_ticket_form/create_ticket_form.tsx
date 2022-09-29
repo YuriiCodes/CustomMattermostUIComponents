@@ -56,6 +56,7 @@ export default function CreateTicketForm(): JSX.Element {
                                 placeholder={"email@gmail.com"}
                                 setValue={setEmail}
                     />
+
                     <button className={classes.submitBtn} type={"submit"}>Create ticket ar PipeDrive</button>
                 </div>
             </form>
