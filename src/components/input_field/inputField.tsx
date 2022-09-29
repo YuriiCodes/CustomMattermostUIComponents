@@ -2,6 +2,7 @@ import {ComponentProps} from "react";
 
 import classes from "./inputField.module.css";
 export default function InputField(props: ComponentProps<any>) {
+
     return (
         <div className={classes.inputField}>
             <label htmlFor={props.name}>{props.name || "value"}: </label>
@@ -11,6 +12,9 @@ export default function InputField(props: ComponentProps<any>) {
                    placeholder={props.placeholder}
                    type={props.type}
                    required={props.required}
+                   onChange={(e) => {
+                       props.setValue(e.target.value);
+                   }}
             />
         </div>
     )
