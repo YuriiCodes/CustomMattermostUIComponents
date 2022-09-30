@@ -1,29 +1,67 @@
 import classes from "../customUIStyles.module.css";
 import React, {ComponentProps, useState} from "react";
 import InputField from "../input_field/inputField";
+import {inputsState} from "../interfaces";
 
 
 interface iCreateTicketForm {
-    setTitle: React.Dispatch<React.SetStateAction<string>>,
-    setName: React.Dispatch<React.SetStateAction<string>>,
-    setLIUrl: React.Dispatch<React.SetStateAction<string>>,
-    setPosition: React.Dispatch<React.SetStateAction<string>>,
-    setPhone: React.Dispatch<React.SetStateAction<string>>,
-    setEmail: React.Dispatch<React.SetStateAction<string>>,
+    inputsStateForTicketForm?: inputsState,
     isTokenSet: boolean
 }
 
 export default function CreateTicketForm(props: iCreateTicketForm): JSX.Element {
 
-
     return (
-        <div className={classes.addTicketForm+ " " + classes.baseBg} >
-            <form>
+        <div className={classes.addTicketForm + " " + classes.baseBg}>
+            <form onSubmit={async e => {
+                e.preventDefault();
+
+
+                // const response = await fetch("https://reqbin.com/echo/post/json", {
+                //         method: 'POST',
+                //         headers: {
+                //             'Accept': 'application/json',
+                //             'Content-Type': 'application/json'
+                //         },
+                //         body: `{
+                //     "Id": 78912,
+                //     "Customer": "Jason Sweet",
+                //     "Quantity": 1,
+                //     "Price": 18.00
+                //     }`,
+                //     }
+                // );
+                // response.json().then(data => {
+                //     console.log(data);
+                // });
+
+                const response = await fetch("https://api.pipedrive.com/v1/leads?api_token=9c1ba905eeccc08eb6df0f4397b90aa7f85a6172", {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                    },
+                    body: `{
+                        "title": "${props.inputsStateForTicketForm?.title}",
+                        "owner_id": 13439491,
+                        "person_id": 1,
+                        "value": {
+                            "amount": 40,
+                            "currency": "UAH"
+                        }
+                    }`
+                });
+                response.json().then(data => {
+                    console.log(data);
+                })
+
+            }}>
                 <div className={classes.inputGroup}>
                     <InputField name={"Title"}
                                 placeholder={"Deal with Microsoft"}
                                 type={"text"} required={true}
-                                setValue={props.setTitle}
+                        // @ts-ignore
+                                setValue={props.inputsStateForTicketForm.title.setTitle}
                     />
 
 
@@ -31,7 +69,8 @@ export default function CreateTicketForm(props: iCreateTicketForm): JSX.Element 
                                 placeholder={"Bill Gates"}
                                 type={"text"}
                                 required={true}
-                                setValue={props.setName}
+                        // @ts-ignore
+                                setValue={props.inputsStateForTicketForm.name.setName}
                     />
 
 
@@ -39,7 +78,8 @@ export default function CreateTicketForm(props: iCreateTicketForm): JSX.Element 
                                 placeholder={"https://www.linkedin.com/in/williamhgates/"}
                                 type={"text"}
                                 required={true}
-                                setValue={props.setLIUrl}
+                        // @ts-ignore
+                                setValue={props.inputsStateForTicketForm.LIUrl.setLIUrl}
                     />
 
 
@@ -47,23 +87,28 @@ export default function CreateTicketForm(props: iCreateTicketForm): JSX.Element 
                                 placeholder={"Founder and CEO of Microsoft"}
                                 type={"text"}
                                 required={true}
-                                setValue={props.setPosition}
+                        // @ts-ignore
+                                setValue={props.inputsStateForTicketForm.position.setPosition}
                     />
 
 
                     <InputField name={"Phone"}
-                                setValue={props.setPhone}
+                        // @ts-ignore
+                                setValue={props.inputsStateForTicketForm.phone.setPhone}
                     />
                     <InputField name={"Email"}
                                 type={"email"}
                                 placeholder={"email@gmail.com"}
-                                setValue={props.setEmail}
+                        // @ts-ignore
+                                setValue={props.inputsStateForTicketForm.email.setEmail}
                     />
 
                     {props.isTokenSet ?
-                        <button className={classes.submitBtn} type={"submit"} disabled={false}>Create ticket ar PipeDrive</button>
+                        <button className={classes.submitBtn} type={"submit"} disabled={false}>Create ticket ar
+                            PipeDrive</button>
                         :
-                        <button className={classes.disabledBtn} type={"submit"} disabled={true}>Create ticket ar PipeDrive</button>
+                        <button className={classes.disabledBtn} type={"submit"} disabled={true}>Create ticket ar
+                            PipeDrive</button>
                     }
 
                 </div>

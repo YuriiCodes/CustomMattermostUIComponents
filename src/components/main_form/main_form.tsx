@@ -1,7 +1,8 @@
 import ApiKeyEnterForm from "../api_key_enter_form";
-import Create_ticket_form from "../create_ticket_form";
+import CreateTicketForm from "../create_ticket_form";
 import React, {useState} from "react";
 import classes from "../customUIStyles.module.css";
+import {inputsState} from "../interfaces";
 
 
 interface iChangeExistingApiToken {
@@ -35,6 +36,33 @@ export default function MainForm() {
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
 
+    const ticketFormObj : inputsState = {
+        title: {
+            title,
+            setTitle
+        },
+        name: {
+            name,
+            setName
+        },
+        LIUrl: {
+            LIUrl,
+            setLIUrl,
+        },
+        position: {
+            position,
+            setPosition,
+        },
+        phone: {
+            phone,
+            setPhone,
+        },
+        email: {
+            email,
+            setEmail
+        }
+    }
+
 
     console.log(`apiToken: ${apiToken}`);
     console.log(`title: ${title}, name: ${name}, LIUrl: ${LIUrl}, position: ${position}, phone:${phone}, email:${email}`);
@@ -48,13 +76,8 @@ export default function MainForm() {
                     <ApiKeyEnterForm oldToken={apiToken} setIsApiTokenSet={setIsApiTokenSet} setValue={setApiToken}/>
                 </div>
             }
-            <Create_ticket_form
-                setTitle={setTitle}
-                setName={setName}
-                setLIUrl={setLIUrl}
-                setPosition={setPosition}
-                setPhone={setPhone}
-                setEmail={setEmail}
+            <CreateTicketForm
+                inputsStateForTicketForm={ticketFormObj}
                 isTokenSet={isApiTokenSet}
             />
 
