@@ -2,58 +2,22 @@ import classes from "../customUIStyles.module.css";
 import React, {ComponentProps, useState} from "react";
 import InputField from "../input_field/inputField";
 import {inputsState} from "../interfaces";
-
+import {PipedriveApi} from "../main_form/api/api";
 
 interface iCreateTicketForm {
+    apiToken: string,
     inputsStateForTicketForm?: inputsState,
     isTokenSet: boolean
 }
 
+// TODO: add a feedback about request
 export default function CreateTicketForm(props: iCreateTicketForm): JSX.Element {
-
     return (
         <div className={classes.addTicketForm + " " + classes.baseBg}>
             <form onSubmit={async e => {
                 e.preventDefault();
-
-
-                // const response = await fetch("https://reqbin.com/echo/post/json", {
-                //         method: 'POST',
-                //         headers: {
-                //             'Accept': 'application/json',
-                //             'Content-Type': 'application/json'
-                //         },
-                //         body: `{
-                //     "Id": 78912,
-                //     "Customer": "Jason Sweet",
-                //     "Quantity": 1,
-                //     "Price": 18.00
-                //     }`,
-                //     }
-                // );
-                // response.json().then(data => {
-                //     console.log(data);
-                // });
-
-                const response = await fetch("https://api.pipedrive.com/v1/leads?api_token=9c1ba905eeccc08eb6df0f4397b90aa7f85a6172", {
-                    method: "POST",
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-Type": "application/json",
-                    },
-                    body: `{
-                        "title": "${props.inputsStateForTicketForm?.title}",
-                        "owner_id": 13439491,
-                        "person_id": 1,
-                        "value": {
-                            "amount": 40,
-                            "currency": "UAH"
-                        }
-                    }`
-                });
-                response.json().then(data => {
-                    console.log(data);
-                })
+                // @ts-ignore
+                PipedriveApi.addLead(props.apiToken, props.inputsStateForTicketForm?.title?.title, 40, 13439491,1);
 
             }}>
                 <div className={classes.inputGroup}>

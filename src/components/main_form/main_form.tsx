@@ -77,6 +77,7 @@ export default function MainForm() {
                 </div>
             }
             <CreateTicketForm
+                apiToken={apiToken}
                 inputsStateForTicketForm={ticketFormObj}
                 isTokenSet={isApiTokenSet}
             />
