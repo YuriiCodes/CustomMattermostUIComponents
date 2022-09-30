@@ -43,27 +43,20 @@ export default function MainForm() {
             {/*We check if a user has already provided an API token. If there's no token, we give him a toke input form.*/}
             {isApiTokenSet ? <div>
                     <ChangeExistingApiToken handler={setIsApiTokenSet}/>
-                    <Create_ticket_form
-                        setTitle={setTitle}
-                        setName={setName}
-                        setLIUrl={setLIUrl}
-                        setPosition={setPosition}
-                        setPhone={setPhone}
-                        setEmail={setEmail}
-                    />
                 </div> :
-
                 <div>
                     <ApiKeyEnterForm oldToken={apiToken} setIsApiTokenSet={setIsApiTokenSet} setValue={setApiToken}/>
-                    <Create_ticket_form
-                        setTitle={setTitle}
-                        setName={setName}
-                        setLIUrl={setLIUrl}
-                        setPosition={setPosition}
-                        setPhone={setPhone}
-                        setEmail={setEmail}
-                    />
-                </div>}
+                </div>
+            }
+            <Create_ticket_form
+                setTitle={setTitle}
+                setName={setName}
+                setLIUrl={setLIUrl}
+                setPosition={setPosition}
+                setPhone={setPhone}
+                setEmail={setEmail}
+                isTokenSet={isApiTokenSet}
+            />
 
         </div>
     )

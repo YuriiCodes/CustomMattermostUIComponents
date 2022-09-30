@@ -33,8 +33,17 @@
     border-radius: 2px;
     color: #fff;
 }
-
-
+.disabledBtn{
+    margin-left: auto;
+    width: 100%;
+    height: 4vh;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    background: #95969E;
+    border-radius: 2px;
+    color: #fff;
+}
 
 .changeToken {
     text-align: center;

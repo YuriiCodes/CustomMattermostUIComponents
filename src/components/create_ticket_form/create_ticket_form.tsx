@@ -10,6 +10,7 @@ interface iCreateTicketForm {
     setPosition: React.Dispatch<React.SetStateAction<string>>,
     setPhone: React.Dispatch<React.SetStateAction<string>>,
     setEmail: React.Dispatch<React.SetStateAction<string>>,
+    isTokenSet: boolean
 }
 
 export default function CreateTicketForm(props: iCreateTicketForm): JSX.Element {
@@ -59,7 +60,12 @@ export default function CreateTicketForm(props: iCreateTicketForm): JSX.Element 
                                 setValue={props.setEmail}
                     />
 
-                    <button className={classes.submitBtn} type={"submit"}>Create ticket ar PipeDrive</button>
+                    {props.isTokenSet ?
+                        <button className={classes.submitBtn} type={"submit"} disabled={false}>Create ticket ar PipeDrive</button>
+                        :
+                        <button className={classes.disabledBtn} type={"submit"} disabled={true}>Create ticket ar PipeDrive</button>
+                    }
+
                 </div>
             </form>
         </div>
