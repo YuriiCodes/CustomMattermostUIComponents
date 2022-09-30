@@ -4,6 +4,7 @@ import classes from "./inputField.module.css";
 
 interface InputFieldProps {
     name: string,
+    value?: string,
     placeholder?: string,
     required?: boolean,
     // Text by default, so we leave it as optional. Can also be email/phone/password, etc.
@@ -26,6 +27,7 @@ export default function InputField(props: InputFieldProps) {
                    onChange={(e) => {
                        props.setValue(e.target.value);
                    }}
+                   value={props.value}
             />
         </div>
     )

@@ -1,26 +1,28 @@
 import classes from "../customUIStyles.module.css";
-import {ComponentProps, useState} from "react";
+import React, {ComponentProps, useState} from "react";
 import InputField from "../input_field/inputField";
 
 
-export default function CreateTicketForm(): JSX.Element {
+interface iCreateTicketForm {
+    setTitle: React.Dispatch<React.SetStateAction<string>>,
+    setName: React.Dispatch<React.SetStateAction<string>>,
+    setLIUrl: React.Dispatch<React.SetStateAction<string>>,
+    setPosition: React.Dispatch<React.SetStateAction<string>>,
+    setPhone: React.Dispatch<React.SetStateAction<string>>,
+    setEmail: React.Dispatch<React.SetStateAction<string>>,
+}
 
-    // All the values that user inputs are stored in this state,
-    const [title, setTitle] = useState("");
-    const [name, setName] = useState("");
-    const [LIUrl, setLIUrl] = useState("");
-    const [position, setPosition] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
+export default function CreateTicketForm(props: iCreateTicketForm): JSX.Element {
+
 
     return (
-        <div className={classes.addTicketForm}>
+        <div className={classes.addTicketForm+ " " + classes.baseBg} >
             <form>
                 <div className={classes.inputGroup}>
                     <InputField name={"Title"}
                                 placeholder={"Deal with Microsoft"}
                                 type={"text"} required={true}
-                                setValue={setTitle}
+                                setValue={props.setTitle}
                     />
 
 
@@ -28,7 +30,7 @@ export default function CreateTicketForm(): JSX.Element {
                                 placeholder={"Bill Gates"}
                                 type={"text"}
                                 required={true}
-                                setValue={setName}
+                                setValue={props.setName}
                     />
 
 
@@ -36,7 +38,7 @@ export default function CreateTicketForm(): JSX.Element {
                                 placeholder={"https://www.linkedin.com/in/williamhgates/"}
                                 type={"text"}
                                 required={true}
-                                setValue={setLIUrl}
+                                setValue={props.setLIUrl}
                     />
 
 
@@ -44,17 +46,17 @@ export default function CreateTicketForm(): JSX.Element {
                                 placeholder={"Founder and CEO of Microsoft"}
                                 type={"text"}
                                 required={true}
-                                setValue={setPosition}
+                                setValue={props.setPosition}
                     />
 
 
                     <InputField name={"Phone"}
-                                setValue={setPhone}
+                                setValue={props.setPhone}
                     />
                     <InputField name={"Email"}
                                 type={"email"}
                                 placeholder={"email@gmail.com"}
-                                setValue={setEmail}
+                                setValue={props.setEmail}
                     />
 
                     <button className={classes.submitBtn} type={"submit"}>Create ticket ar PipeDrive</button>

@@ -1,19 +1,28 @@
-.addTicketForm{
-    width: 50vw;
-    padding: 1em;
-    background-color: #eee;
+.addTicketForm {
     display: flex;
     justify-content: center;
     align-content: center;
+}
+
+.baseBg {
+    width: 50vw;
+    padding: 1em;
     border: 3px solid #d8d4dc;
     border-radius: 10px;
+    background-color: #eee;
 }
-.inputGroup{
+
+.apiSubmitted {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.inputGroup {
     width: 50vw;
 }
 
-
-.submitBtn{
+.submitBtn {
     margin-left: auto;
     width: 100%;
     height: 4vh;
@@ -25,3 +34,23 @@
     color: #fff;
 }
 
+
+
+.changeToken {
+    text-align: center;
+    background-color: #ddd;
+    border: none;
+    color: black;
+    text-align: center;
+    padding: .5em;
+    border-radius: 10px;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: 0.3s;
+}
+
+.changeToken:hover {
+    background-color: #173fd0;;
+    color: #fff;
+    cursor: pointer;
+}
