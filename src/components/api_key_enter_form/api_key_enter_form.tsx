@@ -4,6 +4,7 @@ import React, {useState} from "react";
 
 
 interface iApiKeyEnterForm{
+    oldToken: string,
     setIsApiTokenSet:  React.Dispatch<React.SetStateAction<boolean>>,
     setValue: React.Dispatch<React.SetStateAction<string>>
 }
@@ -17,7 +18,7 @@ export default function ApiKeyEnterForm(props: iApiKeyEnterForm): JSX.Element {
                 props.setIsApiTokenSet(true);
             }}>
                 <div className={classes.inputGroup}>
-                    <InputField name={"PipeDrive API key"} placeholder={""} type={"text"} required={true} setValue={props.setValue} />
+                    <InputField name={"PipeDrive API key"} placeholder={""} type={"text"} required={true} setValue={props.setValue} value={props.oldToken}/>
                     <button className={classes.submitBtn} type={"submit"}>Submit API key</button>
                 </div>
             </form>

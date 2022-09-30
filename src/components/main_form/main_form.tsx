@@ -25,7 +25,7 @@ export default function MainForm() {
     const [apiToken, setApiToken] = useState("test_token");
 
     // a value that will hold an old token before the update. We need it in case user presses the "change token" value by accident.
-    const [isApiTokenSet, toggleIsApiTokenSet] = useState(true);
+    const [isApiTokenSet, setIsApiTokenSet] = useState(true);
 
     // All the values that user inputs are stored in this state,
     const [title, setTitle] = useState("");
@@ -42,7 +42,7 @@ export default function MainForm() {
         <div>
             {/*We check if a user has already provided an API token. If there's no token, we give him a toke input form.*/}
             {isApiTokenSet ? <div>
-                    <ChangeExistingApiToken handler={toggleIsApiTokenSet}/>
+                    <ChangeExistingApiToken handler={setIsApiTokenSet}/>
                     <Create_ticket_form
                         setTitle={setTitle}
                         setName={setName}
@@ -54,7 +54,7 @@ export default function MainForm() {
                 </div> :
 
                 <div>
-                    <ApiKeyEnterForm setIsApiTokenSet={toggleIsApiTokenSet} setValue={setApiToken}/>
+                    <ApiKeyEnterForm oldToken={apiToken} setIsApiTokenSet={setIsApiTokenSet} setValue={setApiToken}/>
                     <Create_ticket_form
                         setTitle={setTitle}
                         setName={setName}
