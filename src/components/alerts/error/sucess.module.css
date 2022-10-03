@@ -1,0 +1,12 @@
+.error{
+    width: 50vw;
+    height: 4vh;
+    text-align: center;
+    padding-y: auto;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    background: #C5343E;
+    border-radius: 2px;
+    color: #fff;
+}

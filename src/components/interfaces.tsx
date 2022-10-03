@@ -27,3 +27,7 @@ export interface inputsState {
     }
 
 }
+
+export interface addLeadApiResponse{
+    success: boolean
+}

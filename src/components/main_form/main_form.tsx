@@ -5,6 +5,7 @@ import classes from "../customUIStyles.module.css";
 import {inputsState} from "../interfaces";
 
 
+
 interface iChangeExistingApiToken {
 
     handler: React.Dispatch<React.SetStateAction<boolean>>
@@ -23,10 +24,17 @@ function ChangeExistingApiToken(props: iChangeExistingApiToken) {
 }
 
 export default function MainForm() {
-    const [apiToken, setApiToken] = useState("test_token");
+    const [apiToken, setApiToken] = useState("9c1ba905eeccc08eb6df0f4397b90aa7f85a6172");
 
-    // a value that will hold an old token before the update. We need it in case user presses the "change token" value by accident.
+    // Bool state piece that determines if the form is locked for another request, or not
     const [canRequestBeSent, setCanRequestBeSent] = useState(true);
+
+    // A bool variable that is used to output success massage when the request is done.
+    const [ isRequestSuccessful, setIsRequestSuccessful] = useState(false);
+
+
+    // if something goes wrong with request, responseMsg will hold the error code.
+    const [ responseMsg, setResponseMsg] = useState("");
 
     // All the values that user inputs are stored in this state,
     const [title, setTitle] = useState("");
@@ -63,9 +71,7 @@ export default function MainForm() {
         }
     }
 
-
-    console.log(`apiToken: ${apiToken}`);
-    console.log(`title: ${title}, name: ${name}, LIUrl: ${LIUrl}, position: ${position}, phone:${phone}, email:${email}`);
+    console.log("OWOO RESPONSE succeSFILL:" + isRequestSuccessful )
     return (
         <div>
             {/*We check if a user has already provided an API token. If there's no token, we give him a toke input form.*/}
@@ -79,8 +85,12 @@ export default function MainForm() {
             <CreateTicketForm
                 apiToken={apiToken}
                 inputsStateForTicketForm={ticketFormObj}
+
                 canRequestBeSent={canRequestBeSent}
                 setCanRequestBeSent={setCanRequestBeSent}
+
+                isRequestSuccessful={isRequestSuccessful}
+                setIsRequestSuccessful={setIsRequestSuccessful}
             />
 
         </div>

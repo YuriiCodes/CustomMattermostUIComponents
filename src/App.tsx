@@ -4,7 +4,7 @@ import './App.css';
 import CreateTicketForm from "./components/create_ticket_form";
 import Create_ticket_form from "./components/create_ticket_form";
 import ApiKeyEnterForm from "./components/api_key_enter_form";
-import MessageAfterSubmit from "./components/emssage_after_submit";
+import MessageAfterSubmit from "./components/message_after_submit";
 import MainForm from "./components/main_form";
 
 function App() {
